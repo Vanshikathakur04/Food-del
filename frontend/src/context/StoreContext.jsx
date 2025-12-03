@@ -11,12 +11,10 @@ const StoreContextProvider = (props) => {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
 
   useEffect(() => {
-    if (token) {
-      localStorage.setItem("token", token);
-    } else {
-      localStorage.removeItem("token");
-    }
-  }, [token]);
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    } 
+  },[]);
 
   const addToCart = (itemId) => {
     if (!cartItems[itemId]) {
